@@ -28,3 +28,4 @@ async def on_message(collect):
                 time.sleep(15)
                 gsl.messageEvent()
             
+await tracker.connect()
