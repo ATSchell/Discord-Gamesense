@@ -27,12 +27,12 @@ def loadConfig():
 #For sending pre-defined JSON to Gamesense
 def postToGameSense(config,case):
     #open coreProps.json to get the Gamesense port and address
-    with open(config[corepropsdir]) as propfile:
+    with open(config["corepropsdir"]) as propfile:
         coreprop = json.load(propfile)
     #build the address
     operation=caseSwitch.get(case)
     subaddress=addressSwitch.get(case)
-    address = 'http://'+coreprop[address]+'/'+subaddress
+    address = 'http://'+coreprop["address"]+'/'+subaddress
     #POST to Gamesense
     session.post(address,json=(operation))
 

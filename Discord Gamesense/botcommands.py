@@ -14,18 +14,18 @@ async def on_ready():
 @tracker.event
 async def on_message(collect):
     #Ignore if the message comes from you
-    if collect.author.id != config[User_Id] :
+    if collect.author.id != config["User_Id"] :
         #Find member info based off User_Id
-        user=tracker.get_member(config[User_Id])
+        user=tracker.get_member(config["User_Id"])
         if user.mentioned_in(collect):
             gsl.mentionEvent(config)
             while user.status == 'idle':
                 time.sleep(15)
                 gsl.mentionEvent()
-        elif config[Alert_on_active]:
+        elif config["Alert_on_active"]:
             gsl.messageEvent(config)
             while user.status == 'idle':
                 time.sleep(15)
                 gsl.messageEvent()
-            
-tracker.run(config[token])
+
+tracker.run(config["token"])
